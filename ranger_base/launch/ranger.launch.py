@@ -15,11 +15,11 @@ def generate_launch_description():
 
     port_name_arg = DeclareLaunchArgument('port_name', default_value='can0',
                                          description='CAN bus name, e.g. can0')
-    odom_frame_arg = DeclareLaunchArgument('odom_frame', default_value='odom',
+    odom_frame_arg = DeclareLaunchArgument('odom_frame', default_value='ranger_odom',
                                            description='Odometry frame id')
-    base_link_frame_arg = DeclareLaunchArgument('base_frame', default_value='base_link',
+    base_link_frame_arg = DeclareLaunchArgument('base_frame', default_value='ranger_base_link',
                                                 description='Base link frame id')
-    odom_topic_arg = DeclareLaunchArgument('odom_topic_name', default_value='odom',
+    odom_topic_arg = DeclareLaunchArgument('odom_topic_name', default_value='ranger_odom',
                                            description='Odometry topic name')
 
     simulated_robot_arg = DeclareLaunchArgument('simulated_robot', default_value='false',
@@ -42,7 +42,7 @@ def generate_launch_description():
                 'base_frame': launch.substitutions.LaunchConfiguration('base_frame'),
                 'odom_topic_name': launch.substitutions.LaunchConfiguration('odom_topic_name'),
                 'simulated_robot': launch.substitutions.LaunchConfiguration('simulated_robot'),
-                'publish_odom_tf': launch.substitutions.LaunchConfiguration('control_rate'),
+                'publish_odom_tf': launch.substitutions.LaunchConfiguration('publish_odom_tf'),
         }])
 
     return LaunchDescription([
